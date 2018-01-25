@@ -4,7 +4,6 @@
 using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-using Microsoft.Azure.Management.Samples.Common;
 using System;
 using System.Linq;
 
@@ -31,48 +30,44 @@ namespace ManageStorageAccount
                 // ============================================================
                 // Create a storage account
 
-                Utilities.Log("Creating a Storage Account");
+                Console.WriteLine("Creating a Storage Account");
 
                 var storageAccount = azure.StorageAccounts.Define(storageAccountName)
                         .WithRegion(Region.USEast)
                         .WithNewResourceGroup(rgName)
                         .Create();
 
-                Utilities.Log("Created a Storage Account:");
-                Utilities.PrintStorageAccount(storageAccount);
+                Console.WriteLine("Created a Storage Account:");
 
                 // ============================================================
                 // Get | regenerate storage account access keys
 
-                Utilities.Log("Getting storage account access keys");
+                Console.WriteLine("Getting storage account access keys");
 
                 var storageAccountKeys = storageAccount.GetKeys();
 
-                Utilities.PrintStorageAccountKeys(storageAccountKeys);
 
-                Utilities.Log("Regenerating first storage account access key");
+                Console.WriteLine("Regenerating first storage account access key");
 
                 storageAccountKeys = storageAccount.RegenerateKey(storageAccountKeys[0].KeyName);
 
-                Utilities.PrintStorageAccountKeys(storageAccountKeys);
 
                 // ============================================================
                 // Create another storage account
 
-                Utilities.Log("Creating a 2nd Storage Account");
+                Console.WriteLine("Creating a 2nd Storage Account");
 
                 var storageAccount2 = azure.StorageAccounts.Define(storageAccountName2)
                         .WithRegion(Region.USEast)
                         .WithNewResourceGroup(rgName)
                         .Create();
 
-                Utilities.Log("Created a Storage Account:");
-                Utilities.PrintStorageAccount(storageAccount2);
+                Console.WriteLine("Created a Storage Account:");
 
                 // ============================================================
                 // Update storage account by enabling encryption
 
-                Utilities.Log($"Enabling encryption for the storage account: {storageAccount2.Name}");
+                Console.WriteLine($"Enabling encryption for the storage account: {storageAccount2.Name}");
 
                 storageAccount2.Update()
                         .WithEncryption()
@@ -81,13 +76,13 @@ namespace ManageStorageAccount
                 foreach (var encryptionStatus in storageAccount2.EncryptionStatuses)
                 {
                     String status = encryptionStatus.Value.IsEnabled ? "Enabled" : "Not enabled";
-                    Utilities.Log($"Encryption status of the service {encryptionStatus.Key}:{status}");
+                    Console.WriteLine($"Encryption status of the service {encryptionStatus.Key}:{status}");
                 }
 
                 // ============================================================
                 // List storage accounts
 
-                Utilities.Log("Listing storage accounts");
+                Console.WriteLine("Listing storage accounts");
 
                 var storageAccounts = azure.StorageAccounts;
 
@@ -95,29 +90,29 @@ namespace ManageStorageAccount
 
                 foreach (var account in accounts)
                 {
-                    Utilities.Log($"Storage Account {account.Name} created @ {account.CreationTime}");
+                    Console.WriteLine($"Storage Account {account.Name} created @ {account.CreationTime}");
                 }
 
                 // ============================================================
                 // Delete a storage account
 
-                Utilities.Log($"Deleting a storage account - {accounts.ElementAt(0).Name} created @ {accounts.ElementAt(0).CreationTime}");
+                Console.WriteLine($"Deleting a storage account - {accounts.ElementAt(0).Name} created @ {accounts.ElementAt(0).CreationTime}");
 
                 azure.StorageAccounts.DeleteById(accounts.ElementAt(0).Id);
 
-                Utilities.Log("Deleted storage account");
+                Console.WriteLine("Deleted storage account");
             }
             finally
             {
                 if (azure.ResourceGroups.GetByName(rgName) != null)
                 {
-                    Utilities.Log("Deleting Resource Group: " + rgName);
+                    Console.WriteLine("Deleting Resource Group: " + rgName);
                     azure.ResourceGroups.DeleteByName(rgName);
-                    Utilities.Log("Deleted Resource Group: " + rgName);
+                    Console.WriteLine("Deleted Resource Group: " + rgName);
                 }
                 else
                 {
-                    Utilities.Log("Did not create any resources in Azure. No clean up is necessary");
+                    Console.WriteLine("Did not create any resources in Azure. No clean up is necessary");
                 }
             }
         }
@@ -137,13 +132,13 @@ namespace ManageStorageAccount
                     .WithDefaultSubscription();
 
                 // Print selected subscription
-                Utilities.Log("Selected subscription: " + azure.SubscriptionId);
+                Console.WriteLine("Selected subscription: " + azure.SubscriptionId);
 
                 RunSample(azure);
             }
             catch (Exception ex)
             {
-                Utilities.Log(ex);
+                Console.WriteLine(ex);
             }
         }
     }
