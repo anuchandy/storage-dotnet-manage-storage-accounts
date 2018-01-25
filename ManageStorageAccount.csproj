@@ -31,7 +31,7 @@
     <PackageReference Include="System.Reflection" Version="4.3.0" />
   </ItemGroup>
 
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net452|AnyCPU'">
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|AnyCPU'">
     <OutputType>exe</OutputType>
   </PropertyGroup>
 
