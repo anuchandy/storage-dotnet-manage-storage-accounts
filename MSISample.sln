@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManageStorageAccount", "ManageStorageAccount.csproj", "{E63240C4-E80D-4DB3-9C46-7C548F74AF72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSISample", "MSISample\MSISample.csproj", "{951D1FF6-2957-4DBF-A323-471067951308}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E63240C4-E80D-4DB3-9C46-7C548F74AF72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E63240C4-E80D-4DB3-9C46-7C548F74AF72}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E63240C4-E80D-4DB3-9C46-7C548F74AF72}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E63240C4-E80D-4DB3-9C46-7C548F74AF72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{951D1FF6-2957-4DBF-A323-471067951308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{951D1FF6-2957-4DBF-A323-471067951308}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{951D1FF6-2957-4DBF-A323-471067951308}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{951D1FF6-2957-4DBF-A323-471067951308}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CF596A22-EC18-49AB-8CA4-3387392A07BB}
+		SolutionGuid = {754D1174-E95A-4EF4-B800-C18DB289A559}
 	EndGlobalSection
 EndGlobal
