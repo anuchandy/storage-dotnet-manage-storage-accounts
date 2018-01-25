@@ -80,7 +80,7 @@ namespace MSISample
                         .Create();
 
                 **/
-                Console.WriteLine($"Created virtual machine using MSI credentials: {virtualMachine.Id}");
+                // Console.WriteLine($"Created virtual machine using MSI credentials: {virtualMachine.Id}");
             }
             catch (Exception ex)
             {
